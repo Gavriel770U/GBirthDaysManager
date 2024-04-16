@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GBirthDaysManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="GBirthDaysManager" Height="450" Width="800">
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="5,0,0,0">
+            <Label Content ="Celebrator name to add:" Margin="0,0,0,0"/>
+            <TextBox Name="AddCelebratorTextBox" Width="200" HorizontalAlignment="Left" Margin="5,0,0,10"/>
+            <Button Name="AddCelebratorButton" Content="Add Celebrator" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Click="AddCelebratorButton_Click"/>
+        </StackPanel>
 
     </Grid>
 </Window>

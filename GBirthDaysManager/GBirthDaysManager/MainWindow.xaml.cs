@@ -19,6 +19,15 @@ namespace GBirthDaysManager
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void AddCelebratorButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(this.AddCelebratorTextBox.Text))
+            {
+                this.AddCelebratorTextBox.Clear();
+            }
         }
     }
 }
