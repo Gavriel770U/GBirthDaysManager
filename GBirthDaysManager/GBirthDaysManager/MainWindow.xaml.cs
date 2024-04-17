@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -69,6 +70,9 @@ namespace GBirthDaysManager
                         this._datalist.Add(new BirthDayData(data[0], data[1]));
                     }
                 }
+
+                CustomizeCalendar();
+                
             }
             else
             {
@@ -82,6 +86,44 @@ namespace GBirthDaysManager
             {
                 this.NewCelebratorLabel.Content = this.AddCelebratorTextBox.Text;
                 this.AddCelebratorTextBox.Clear();
+            }
+        }
+
+        private void CustomizeCalendar()
+        {
+            // Subscribe to the Loaded event of the Calendar control
+            Calendar.Loaded += Calendar_Loaded;
+        }
+
+        private void Calendar_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Find the CalendarDayButton elements within the Calendar
+            FindCalendarDayButtons(Calendar);
+        }
+
+        private void FindCalendarDayButtons(DependencyObject parent)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child is CalendarDayButton dayButton)
+                {
+                    // Get the date of the button
+                    DateTime date = (DateTime)dayButton.DataContext;
+
+                    foreach (BirthDayData birthDayData in this._datalist)
+                    {
+                        if (DateTime.Parse(birthDayData.date).Equals(date))
+                        {
+                            dayButton.Background = Brushes.Yellow;
+                        }
+                    }
+                }
+                else
+                {
+                    // Recursively search for CalendarDayButton elements
+                    FindCalendarDayButtons(child);
+                }
             }
         }
     }
