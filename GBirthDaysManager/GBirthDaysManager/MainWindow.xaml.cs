@@ -122,6 +122,8 @@ namespace GBirthDaysManager
             Calendar.DisplayDateChanged += Calendar_DisplayDateChanged;
             // Subscribe to the Loaded event of the Calendar control
             Calendar.Loaded += Calendar_Loaded;
+            // Subscribe to the DisplayModeChanged event of the Calendar control
+            Calendar.DisplayModeChanged += Calendar_DisplayModeChanged;
         }
 
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
@@ -134,6 +136,15 @@ namespace GBirthDaysManager
         {
             // Find the CalendarDayButton elements within the Calendar
             FindCalendarDayButtons(Calendar);
+        }
+
+        private void Calendar_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
+        {
+            // Reapply highlighting when the display mode changes
+            if (e.NewMode == CalendarMode.Month)
+            {
+                FindCalendarDayButtons(Calendar);
+            }
         }
 
         private void FindCalendarDayButtons(DependencyObject parent)
@@ -157,7 +168,8 @@ namespace GBirthDaysManager
                     // Check if it's the specific date you want to highlight
                     foreach (BirthDayData birthDayData in this._datalist)
                     {
-                        if (date == DateTime.Parse(birthDayData.date)) // Change this to your specific date
+                        DateTime parsedDate = DateTime.Parse(birthDayData.date);
+                        if (date.Month == parsedDate.Month && date.Day == parsedDate.Day) // Change this to your specific date
                         {
                             // Change background color
                             dayButton.Background = Brushes.LightSkyBlue;
@@ -178,7 +190,10 @@ namespace GBirthDaysManager
 
             foreach (BirthDayData birthDayData in this._datalist)
             {
-                if (this.Calendar.SelectedDate.Value.ToShortDateString() == birthDayData.date)
+                DateTime selectedDate = this.Calendar.SelectedDate.Value;
+                DateTime date = DateTime.Parse(birthDayData.date);
+
+                if (selectedDate.Month == date.Month && selectedDate.Day == date.Day)
                 {
                     this.CelebratorsLabel.Content += birthDayData.name + "\n";
                 }
