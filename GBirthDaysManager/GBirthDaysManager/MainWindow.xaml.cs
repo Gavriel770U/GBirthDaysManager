@@ -18,8 +18,9 @@ namespace GBirthDaysManager
     {
         public MainWindow()
         {
+            LoginScreen ls = new LoginScreen();
+            ls.ShowDialog();
             InitializeComponent();
-
         }
 
         private void AddCelebratorButton_Click(object sender, RoutedEventArgs e)
