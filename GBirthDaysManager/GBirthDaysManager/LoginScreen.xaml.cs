@@ -83,6 +83,8 @@ namespace GBirthDaysManager
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            this.passedLogin = false;
+            this.Close();
         }
     }
 }
