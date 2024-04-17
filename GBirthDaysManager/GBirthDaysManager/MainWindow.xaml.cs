@@ -108,7 +108,7 @@ namespace GBirthDaysManager
                 this.DatePicker.SelectedDate = null;
                 this.AddCelebratorTextBox.Clear();
 
-                this.CustomizeCalendar();
+                this.FindCalendarDayButtons(this.Calendar);
             }
             else
             {
