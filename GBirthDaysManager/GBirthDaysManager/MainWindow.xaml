@@ -26,7 +26,12 @@
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="5,0,5,0">
             <Calendar Name="Calendar" Margin="20"/>
-            <GroupBox Header="Celebrating Birth Day On The Selected Date:" BorderThickness="3" BorderBrush="CornflowerBlue">
+            <GroupBox BorderThickness="3" BorderBrush="CornflowerBlue">
+                <GroupBox.Header>
+                    <Span FontWeight="Bold">
+                        Celebrating Birth Day On The Selected Date:
+                    </Span>
+                </GroupBox.Header>
                 <Label Name="NewCelebratorLabel" Content="" Foreground="Black" FontWeight="Bold"/>
             </GroupBox>
         </StackPanel>

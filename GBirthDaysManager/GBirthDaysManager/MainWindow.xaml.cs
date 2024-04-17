@@ -26,7 +26,7 @@ namespace GBirthDaysManager
         {
             if (!string.IsNullOrWhiteSpace(this.AddCelebratorTextBox.Text))
             {
-                this.NewCelebratorLabel.Content = "On the current date " + this.AddCelebratorTextBox.Text + "\nis celebrating Birth Day!";
+                this.NewCelebratorLabel.Content = this.AddCelebratorTextBox.Text;
                 this.AddCelebratorTextBox.Clear();
             }
         }
