@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +18,8 @@ namespace GBirthDaysManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string loggedUserPath;
+
         public MainWindow()
         {
             LoginScreen ls = new LoginScreen();
@@ -24,6 +28,16 @@ namespace GBirthDaysManager
             if (ls.passedLogin)
             {
                 InitializeComponent();
+                this.loggedUserPath = "./data/"+ls.username+".txt";
+
+                if (!File.Exists(this.loggedUserPath))
+                {
+                    File.Create(this.loggedUserPath).Dispose();
+                }
+                else
+                {
+
+                }
             }
             else
             {
