@@ -20,8 +20,8 @@
         
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="5,0,0,0">
             <Label Content ="Celebrator name to add:" Margin="0,0,0,0"/>
-            <TextBox Name="AddCelebratorTextBox" Width="150" HorizontalAlignment="Left" Margin="5,0,0,10"/>
-            <DatePicker Name="DatePicker" Margin="5,0,0,10" Width="150" HorizontalAlignment="Left"/>
+            <TextBox Name="AddCelebratorTextBox" Width="180" HorizontalAlignment="Left" Margin="5,0,0,10"/>
+            <DatePicker Name="DatePicker" SelectedDateFormat="Long" Margin="5,0,0,10" Width="180" HorizontalAlignment="Left"/>
             <Button Name="AddCelebratorButton" Content="Add Celebrator" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Click="AddCelebratorButton_Click"/>
         </StackPanel>
 
