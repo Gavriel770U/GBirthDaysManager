@@ -20,7 +20,15 @@ namespace GBirthDaysManager
         {
             LoginScreen ls = new LoginScreen();
             ls.ShowDialog();
-            InitializeComponent();
+
+            if (ls.passedLogin)
+            {
+                InitializeComponent();
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
         private void AddCelebratorButton_Click(object sender, RoutedEventArgs e)
