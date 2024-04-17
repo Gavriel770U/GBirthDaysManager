@@ -23,5 +23,10 @@ namespace GBirthDaysManager
         {
             InitializeComponent();
         }
+
+        private void LoginInButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
