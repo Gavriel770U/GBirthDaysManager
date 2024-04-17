@@ -63,12 +63,13 @@ namespace GBirthDaysManager
             }
             catch (Exception ex)
             {
-                messageBoxResult = MessageBox.Show("Users.txt file does not exist!", "GBirthDaysManager | Error", MessageBoxButton.OK,icon:MessageBoxImage.Error);
+                messageBoxResult = MessageBox.Show("Users.txt file does not exist!", "GBirthDaysManager | Error", MessageBoxButton.OK, icon: MessageBoxImage.Error);
             }
 
             if (MessageBoxResult.OK == messageBoxResult)
             {
                 this.passedLogin = false;
+                this.Close();
             }
 
             if (this.passedLogin)
