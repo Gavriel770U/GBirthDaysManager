@@ -28,5 +28,10 @@ namespace GBirthDaysManager
         {
 
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
