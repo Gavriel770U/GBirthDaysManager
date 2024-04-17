@@ -91,11 +91,19 @@ namespace GBirthDaysManager
 
         private void CustomizeCalendar()
         {
+            // Subscribe to the DisplayDateChanged event of the Calendar control
+            Calendar.DisplayDateChanged += Calendar_DisplayDateChanged;
             // Subscribe to the Loaded event of the Calendar control
             Calendar.Loaded += Calendar_Loaded;
         }
 
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Find the CalendarDayButton elements within the Calendar
+            FindCalendarDayButtons(Calendar);
+        }
+
+        private void Calendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e)
         {
             // Find the CalendarDayButton elements within the Calendar
             FindCalendarDayButtons(Calendar);
@@ -111,13 +119,21 @@ namespace GBirthDaysManager
                     // Get the date of the button
                     DateTime date = (DateTime)dayButton.DataContext;
 
+                    if (date != DateTime.Today)
+                    {
+                        // Reset background color to white
+                        dayButton.Background = Brushes.White;
+                    }
+
+                    // Check if it's the specific date you want to highlight
                     foreach (BirthDayData birthDayData in this._datalist)
                     {
-                        if (DateTime.Parse(birthDayData.date).Equals(date))
+                        if (date == DateTime.Parse(birthDayData.date)) // Change this to your specific date
                         {
-                            dayButton.Background = Brushes.Cyan;
+                            // Change background color
+                            dayButton.Background = Brushes.Yellow;
                         }
-                    }
+                    } 
                 }
                 else
                 {
