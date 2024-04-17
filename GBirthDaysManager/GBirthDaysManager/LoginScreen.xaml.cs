@@ -56,6 +56,7 @@ namespace GBirthDaysManager
                     {
                         this.passedLogin = true;
                         this.username = username;
+                        break;
                     }
                     else
                     {

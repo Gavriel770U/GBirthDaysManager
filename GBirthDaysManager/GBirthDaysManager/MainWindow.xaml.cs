@@ -115,7 +115,7 @@ namespace GBirthDaysManager
                     {
                         if (DateTime.Parse(birthDayData.date).Equals(date))
                         {
-                            dayButton.Background = Brushes.Yellow;
+                            dayButton.Background = Brushes.Cyan;
                         }
                     }
                 }
