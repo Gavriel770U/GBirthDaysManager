@@ -13,22 +13,39 @@ using System.Windows.Shapes;
 
 namespace GBirthDaysManager
 {
+    public struct BirthDayData
+    {
+        public BirthDayData(string name, string date)
+        {
+            this.name = name;
+            this.date = date;
+        }
+
+        public string name {  get; set; }
+        public string date { get; set; }
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         public string loggedUserPath;
+        private List<BirthDayData> _datalist;
 
         public MainWindow()
         {
+            this._datalist = new List<BirthDayData>();
+
             LoginScreen ls = new LoginScreen();
             ls.ShowDialog();
+
+            StreamReader streamReader = null;
 
             if (ls.passedLogin)
             {
                 InitializeComponent();
-                this.loggedUserPath = "./data/"+ls.username+".txt";
+                this.loggedUserPath = ".\\data\\"+ls.username+".txt";
 
                 if (!File.Exists(this.loggedUserPath))
                 {
@@ -36,7 +53,21 @@ namespace GBirthDaysManager
                 }
                 else
                 {
+                    streamReader = new StreamReader(this.loggedUserPath);
+                    string line = "";
 
+                    while (line != null)
+                    {
+                        line = streamReader.ReadLine();
+                        if (null == line)
+                        {
+                            break;
+                        }
+
+                        string[] data = line.Split(',');
+
+                        this._datalist.Add(new BirthDayData(data[0], data[1]));
+                    }
                 }
             }
             else
