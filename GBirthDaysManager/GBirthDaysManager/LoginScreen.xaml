@@ -11,15 +11,16 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="0" Grid.Column="0" Margin="5,0,5,0">
-            <Label>Hello</Label>
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" Orientation="Horizontal">
+            <Label Content="Username: " FontWeight="Bold"/>
+            <TextBox Name="UsernameTextBox" Width="100"/>
         </StackPanel>
         
     </Grid>
