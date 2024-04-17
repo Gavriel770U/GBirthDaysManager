@@ -1,0 +1,41 @@
+﻿<Window x:Class="GBirthDaysManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GBirthDaysManager"
+        mc:Ignorable="d"
+        Title="GBirthDaysManager" Height="400" Width="600">
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="5,0,0,0">
+            <Label Content ="Celebrator name to add:" Margin="0,0,0,0"/>
+            <TextBox Name="AddCelebratorTextBox" Width="180" HorizontalAlignment="Left" Margin="5,0,0,10"/>
+            <DatePicker Name="DatePicker" SelectedDateFormat="Long" Margin="5,0,0,10" Width="180" HorizontalAlignment="Left"/>
+            <Button Name="AddCelebratorButton" Content="Add Celebrator" Width="100" HorizontalAlignment="Left" Margin="5,0,0,0" Click="AddCelebratorButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="5,0,5,0">
+            <Calendar Name="Calendar" Margin="20"/>
+            <GroupBox BorderThickness="3" BorderBrush="CornflowerBlue">
+                <GroupBox.Header>
+                    <Span FontWeight="Bold">
+                        Celebrating Birth Day On The Selected Date:
+                    </Span>
+                </GroupBox.Header>
+                <Label Name="NewCelebratorLabel" Content="" Foreground="Black" FontWeight="Bold"/>
+            </GroupBox>
+        </StackPanel>
+
+    </Grid>
+</Window>
