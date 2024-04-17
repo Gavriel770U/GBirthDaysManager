@@ -84,7 +84,6 @@ namespace GBirthDaysManager
 
         private void AddCelebratorButton_Click(object sender, RoutedEventArgs e)
         {
-
             DateTime? date = this.DatePicker.SelectedDate;
             if (null == date)
             {
@@ -169,6 +168,19 @@ namespace GBirthDaysManager
                 {
                     // Recursively search for CalendarDayButton elements
                     FindCalendarDayButtons(child);
+                }
+            }
+        }
+
+        private void Calendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.CelebratorsLabel.Content = "";
+
+            foreach (BirthDayData birthDayData in this._datalist)
+            {
+                if (this.Calendar.SelectedDate.Value.ToShortDateString() == birthDayData.date)
+                {
+                    this.CelebratorsLabel.Content += birthDayData.name + "\n";
                 }
             }
         }
