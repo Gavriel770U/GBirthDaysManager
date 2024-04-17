@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GBirthDaysManager"
         mc:Ignorable="d"
-        Title="GBirthDaysManager Login" Height="100" Width="200">
+        Title="GBirthDaysManager Login" Height="140" Width="240">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,17 +20,17 @@
 
         <StackPanel Grid.Row="0" Grid.Column="0" Margin="5,0,5,0" Orientation="Horizontal">
             <Label Content="Username:" FontWeight="Bold" Margin="0,0,2,0"/>
-            <TextBox Name="UsernameTextBox" Width="100" Height="16" Margin="5,0,5,0"/>
+            <TextBox Name="UsernameTextBox" Width="100" Height="20" Margin="5,0,5,0"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Margin="5,0,5,0" Orientation="Horizontal">
             <Label Content="Password:" FontWeight="Bold" Margin="0,0,5,0"/>
-            <TextBox Name="PasswordTextBox" Width="100" Height="16" Margin="5,0,5,0"/>
+            <TextBox Name="PasswordTextBox" Width="100" Height="20" Margin="5,0,5,0"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0" Margin="5,5,5,5" Orientation="Horizontal">
-            <Button Name="CancelButton" Content="Cancel" Height="20" Width="60" HorizontalAlignment="Left" Margin="0,0,10,0" Click="CancelButton_Click"/>
-            <Button Name="LoginInButton" Content="Log In" Height="20" Width="60" HorizontalAlignment="Right" Margin="7,0,0,0" Click="LoginInButton_Click"/>
+            <Button Name="CancelButton" Content="Cancel" Height="20" Width="60" HorizontalAlignment="Left" Margin="10,0,10,0" Click="CancelButton_Click"/>
+            <Button Name="LoginInButton" Content="Log In" Height="20" Width="60" HorizontalAlignment="Right" Margin="10,0,0,0" Click="LoginInButton_Click"/>
         </StackPanel>
 
     </Grid>
