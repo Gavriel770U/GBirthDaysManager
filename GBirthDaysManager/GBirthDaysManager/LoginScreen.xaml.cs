@@ -71,12 +71,18 @@ namespace GBirthDaysManager
                 this.passedLogin = false;
             }
 
-            this.Close();
+            if (this.passedLogin)
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid Credentials!", "GBirthDaysManager | Error", MessageBoxButton.OK, icon: MessageBoxImage.Error);
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            
         }
     }
 }
