@@ -26,7 +26,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Margin="5,0,5,0">
-            <Calendar Name="Calendar" Margin="20"/>
+            <Calendar Name="Calendar" SelectionMode="MultipleRange" Margin="20"/>
             <GroupBox BorderThickness="3" BorderBrush="CornflowerBlue">
                 <GroupBox.Header>
                     <Span FontWeight="Bold">

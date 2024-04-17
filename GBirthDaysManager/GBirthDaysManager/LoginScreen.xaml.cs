@@ -22,6 +22,7 @@ namespace GBirthDaysManager
     public partial class LoginScreen : Window
     {
         public bool passedLogin = false;
+        public string username;
 
         public LoginScreen()
         {
@@ -54,6 +55,8 @@ namespace GBirthDaysManager
                     if (data[0].Equals(username) && data[1].Equals(password))
                     {
                         this.passedLogin = true;
+                        this.username = username;
+                        break;
                     }
                     else
                     {
@@ -65,6 +68,10 @@ namespace GBirthDaysManager
             {
                 messageBoxResult = MessageBox.Show("Users.txt file does not exist!", "GBirthDaysManager | Error", MessageBoxButton.OK, icon: MessageBoxImage.Error);
             }
+
+            this.UsernameTextBox.Clear();
+            this.PasswordTextBox.Clear();
+                
 
             if (MessageBoxResult.OK == messageBoxResult)
             {
