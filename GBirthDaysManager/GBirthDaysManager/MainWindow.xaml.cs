@@ -69,9 +69,11 @@ namespace GBirthDaysManager
 
                         this._datalist.Add(new BirthDayData(data[0], data[1]));
                     }
+
+                    streamReader.Close();
                 }
 
-                CustomizeCalendar();
+                this.CustomizeCalendar();
                 
             }
             else
@@ -82,10 +84,36 @@ namespace GBirthDaysManager
 
         private void AddCelebratorButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(this.AddCelebratorTextBox.Text))
+
+            DateTime? date = this.DatePicker.SelectedDate;
+            if (null == date)
             {
-                this.NewCelebratorLabel.Content = this.AddCelebratorTextBox.Text;
+                MessageBox.Show("No date selected!", "GBirthDaysManager | Error", MessageBoxButton.OK, icon: MessageBoxImage.Error);
+                return;
+            }
+
+            string celebratorName = this.AddCelebratorTextBox.Text.Trim();
+
+            if (!string.IsNullOrWhiteSpace(celebratorName))
+            {
+                BirthDayData birthDayData = new BirthDayData(celebratorName, date.Value.ToShortDateString());
+                this._datalist.Add(birthDayData);
+
+                StreamWriter streamWriter = null;
+
+                streamWriter = new StreamWriter(this.loggedUserPath, append: true);
+                streamWriter.WriteLine(birthDayData.name + "," + birthDayData.date);
+
+                streamWriter.Close();
+
+                this.DatePicker.SelectedDate = null;
                 this.AddCelebratorTextBox.Clear();
+
+                this.CustomizeCalendar();
+            }
+            else
+            {
+                MessageBox.Show("Name field cannot be empty or space!", "GBirthDaysManager | Error", MessageBoxButton.OK, icon: MessageBoxImage.Error);
             }
         }
 
@@ -118,11 +146,13 @@ namespace GBirthDaysManager
                 {
                     // Get the date of the button
                     DateTime date = (DateTime)dayButton.DataContext;
+                    // Reset background color to white
+                    dayButton.Background = Brushes.White;
 
-                    if (date != DateTime.Today)
+
+                    if (date == DateTime.Today)
                     {
-                        // Reset background color to white
-                        dayButton.Background = Brushes.White;
+                        dayButton.Background = Brushes.LightSlateGray;
                     }
 
                     // Check if it's the specific date you want to highlight
@@ -131,7 +161,7 @@ namespace GBirthDaysManager
                         if (date == DateTime.Parse(birthDayData.date)) // Change this to your specific date
                         {
                             // Change background color
-                            dayButton.Background = Brushes.Yellow;
+                            dayButton.Background = Brushes.LightSkyBlue;
                         }
                     } 
                 }

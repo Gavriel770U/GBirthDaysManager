@@ -63,6 +63,8 @@ namespace GBirthDaysManager
                         this.passedLogin = false;
                     }
                 }
+
+                streamReader.Close();
             }
             catch (Exception ex)
             {
